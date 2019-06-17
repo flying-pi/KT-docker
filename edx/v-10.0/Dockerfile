@@ -14,11 +14,9 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 #TODO use args for platform version
-RUN curl -sLo edxapp.tar.gz https://github.com/edx/edx-platform/archive/open-release/hawthorn.1.tar.gz && \
-    mkdir edxapp && \
-    tar -xvzf edxapp.tar.gz &&  -C edxapp --strip-components 1\
-    mv $(ls | grep edx-platform-open-release) edxapp && \
-    rm ./*.tar.gz
+RUN curl -sLo edxapp.tar.gz https://github.com/edx/edx-platform/archive/open-release/hawthorn.1.tar.gz
+RUN mkdir edxapp && \
+    tar -xvzf edxapp.tar.gz -C edxapp --strip-components 1
 
 ADD ./apt-req /apt-req
 
